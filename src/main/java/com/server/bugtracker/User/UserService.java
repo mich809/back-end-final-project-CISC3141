@@ -8,7 +8,8 @@ import java.util.List;
 
 @Scope("session")
 @Service
-public class UserService {
+public class UserService
+{
 
     @Autowired
     UserRepo userRepo;

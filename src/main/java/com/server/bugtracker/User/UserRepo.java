@@ -12,7 +12,8 @@ import java.util.List;
 @Scope("session")
 @Repository
 @Transactional(readOnly = false)    // If necessary, can delete database entries
-public interface UserRepo extends CrudRepository<User, Long>, JpaRepository<User, Long> {
+public interface UserRepo extends CrudRepository<User, Long>, JpaRepository<User, Long>
+{
 
     /**
      * Gets all of the users from the User table

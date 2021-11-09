@@ -20,7 +20,7 @@ public class UserController
      * Gets all users in User table
      * @return JSON array of users
      */
-    @RequestMapping(method = RequestMethod.GET, value ="/getusers")
+    @RequestMapping(method = RequestMethod.GET, value ="/get-users")
     public List<User> getUsers()
     {
         return userService.getUsers();

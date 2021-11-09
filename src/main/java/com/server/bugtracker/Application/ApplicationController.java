@@ -10,10 +10,9 @@ public class ApplicationController
      * Serves homepage
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String home()
     {
-
         return "test";
     }
 

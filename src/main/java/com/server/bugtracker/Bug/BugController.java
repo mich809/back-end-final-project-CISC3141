@@ -23,7 +23,7 @@ public class BugController
      * Gets all bugs in database
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/getbugs")
+    @RequestMapping(method = RequestMethod.GET, value = "/get-bugs")
     public List<Bug> getBugs()
     {
         return bugService.getBugs();
@@ -34,7 +34,7 @@ public class BugController
      * POST request must be JSON format
      * @param bug
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/createbug")
+    @RequestMapping(method = RequestMethod.POST, value = "/create-bug")
     public void createBug(@RequestBody Bug bug)
     {
         bugService.createBug(bug);
