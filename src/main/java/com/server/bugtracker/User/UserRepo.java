@@ -21,6 +21,9 @@ public interface UserRepo extends CrudRepository<User, Long>, JpaRepository<User
      */
     @Query(value = "SELECT * FROM user", nativeQuery = true)
     public List<User> getUsers();
+    
+    
+    public User findByusername(String username);
 
 }
 

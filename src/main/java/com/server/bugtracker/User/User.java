@@ -16,8 +16,8 @@ public class User
     private long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "user_name")
-    private String user_name;
+    @Column(name = "username")
+    private String username;
     @Column(name = "password")
     private String password;
     @Column(name = "email")
@@ -71,12 +71,12 @@ public class User
 
     public String getUser_name()
     {
-        return user_name;
+        return username;
     }
 
-    public void setUser_name(String user_name)
+    public void setUsername(String username)
     {
-        this.user_name = user_name;
+        this.username = username;
     }
 
     public String getPassword()
