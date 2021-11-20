@@ -17,13 +17,13 @@ public class User
     @Column(name = "name")
     private String name;
     @Column(name = "user_name")
-    private String user_name;
+    private String username;
     @Column(name = "password")
     private String password;
     @Column(name = "email")
     private String email;
     @Column(name = "team_role")
-    private String team_role;
+    private String teamRole;
     @Column(name = "organization")
     private String organization;
 
@@ -43,8 +43,8 @@ public class User
      * @param team_role
      * @param organization
      */
-    public User(long id, String name, String description, String user_name, String password,
-                String email, String team_role, String organization)
+    public User(long id, String name, String description, String username, String password,
+                String email, String teamRole, String organization)
     {
 
     }
@@ -71,12 +71,12 @@ public class User
 
     public String getUser_name()
     {
-        return user_name;
+        return username;
     }
 
-    public void setUser_name(String user_name)
+    public void setUsername(String username)
     {
-        this.user_name = user_name;
+        this.username = username;
     }
 
     public String getPassword()
@@ -101,12 +101,12 @@ public class User
 
     public String getTeam_role()
     {
-        return team_role;
+        return teamRole;
     }
 
-    public void setTeam_role(String team_role)
+    public void setTeam_role(String teamRole)
     {
-        this.team_role = team_role;
+        this.teamRole = teamRole;
     }
 
     public String getOrganization()
