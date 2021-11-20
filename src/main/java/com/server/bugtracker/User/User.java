@@ -23,7 +23,7 @@ public class User
     @Column(name = "email")
     private String email;
     @Column(name = "team_role")
-    private String team_role;
+    private String teamRole;
     @Column(name = "organization")
     private String organization;
 
@@ -101,12 +101,12 @@ public class User
 
     public String getTeam_role()
     {
-        return team_role;
+        return teamRole;
     }
 
     public void setTeam_role(String team_role)
     {
-        this.team_role = team_role;
+        this.teamRole = team_role;
     }
 
     public String getOrganization()
