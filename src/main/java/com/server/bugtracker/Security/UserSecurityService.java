@@ -1,4 +1,4 @@
-package com.server.bugtracker.Services;
+package com.server.bugtracker.Security;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +25,7 @@ import com.server.bugtracker.JWT.*;
 
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserSecurityService implements UserDetailsService{
 	
 	 	@Autowired
 	    private UserRepo userRepo;

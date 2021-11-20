@@ -37,10 +37,10 @@ public class User
      * @param id
      * @param name
      * @param description
-     * @param user_name
+     * @param username
      * @param password
      * @param email
-     * @param team_role
+     * @param teamRole
      * @param organization
      */
     public User(long id, String name, String description, String username, String password,

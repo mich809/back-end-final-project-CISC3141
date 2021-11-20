@@ -1,4 +1,4 @@
-package com.server.bugtracker.controllers;
+package com.server.bugtracker.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -9,27 +9,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.server.bugtracker.JWT.JwtRequest;
 import com.server.bugtracker.JWT.JwtResponse;
-import com.server.bugtracker.Services.UserService;
 import com.server.bugtracker.User.User;
 
 
 
 @Scope("session")
 @RestController
-public class UserController
+public class UserSecurityController
 {
 
 	@Autowired
-	UserService userService;
+    UserSecurityService userSecurityService;
 
     @PostMapping({"/register"})
     public User registerNewUser(@RequestBody User user) {
-        return userService.registerNewUser(user);
+        return userSecurityService.registerNewUser(user);
     }
     
     @PostMapping({"/authenticate"})
     public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception {
-        return  userService.createJwtToken(jwtRequest);
+        return  userSecurityService.createJwtToken(jwtRequest);
     }
 
 }
