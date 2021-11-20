@@ -44,8 +44,12 @@ public class WebConfig extends WebSecurityConfigurerAdapter{
 	        httpSecurity.cors();
 	        httpSecurity.csrf().disable()
 	                .authorizeRequests().antMatchers("/authenticate", "/register").permitAll()
+					.and()
+					.authorizeRequests().antMatchers("/home").authenticated()
 	                .antMatchers(HttpHeaders.ALLOW).permitAll()
 	                .anyRequest().authenticated()
+					.and()
+					.formLogin()
 	                .and()
 	                .exceptionHandling().authenticationEntryPoint(jwtAuthEntyPoint)
 	                .and()
