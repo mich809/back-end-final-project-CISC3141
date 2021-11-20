@@ -43,8 +43,8 @@ public class User
      * @param team_role
      * @param organization
      */
-    public User(long id, String name, String description, String user_name, String password,
-                String email, String team_role, String organization)
+    public User(long id, String name, String description, String username, String password,
+                String email, String teamRole, String organization)
     {
 
     }
