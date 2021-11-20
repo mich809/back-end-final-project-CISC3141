@@ -104,9 +104,9 @@ public class User
         return teamRole;
     }
 
-    public void setTeam_role(String team_role)
+    public void setTeam_role(String teamRole)
     {
-        this.teamRole = team_role;
+        this.teamRole = teamRole;
     }
 
     public String getOrganization()
