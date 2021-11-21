@@ -84,8 +84,8 @@ public class UserSecurityService implements UserDetailsService{
 		            throw new Exception("INVALID_CREDENTIALS", e);
 		        }
 		    }
-		
-		  public User registerNewUser(User user) {    
+
+			public User registerNewUser(User user) {
 			  	user.setPassword(passwordEncoder.encode(user.getPassword()));
 			  	return userRepo.save(user);
 		    }
