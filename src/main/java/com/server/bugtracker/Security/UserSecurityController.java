@@ -2,6 +2,7 @@ package com.server.bugtracker.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,7 +23,7 @@ public class UserSecurityController
     UserSecurityService userSecurityService;
 
     @PostMapping({"/register"})
-    public User registerNewUser(@RequestBody User user) {
+    public ResponseEntity<String> registerNewUser(@RequestBody User user) {
         return userSecurityService.registerNewUser(user);
     }
     
