@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -84,10 +86,18 @@ public class UserSecurityService implements UserDetailsService{
 		            throw new Exception("INVALID_CREDENTIALS", e);
 		        }
 		    }
-
-			public User registerNewUser(User user) {
-			  	user.setPassword(passwordEncoder.encode(user.getPassword()));
-			  	return userRepo.save(user);
+			
+			// check if username already exist in the database, if it does...then it returns a conflic status, otherwise user gets saved to repo.
+			public ResponseEntity<String> registerNewUser(User user) {
+				if(userRepo.existsByusername(user.getUser_name())) {					
+					return new ResponseEntity<String>(user.getUser_name() + " already exist in the database", HttpStatus.CONFLICT);
+				}
+				else {
+					user.setPassword(passwordEncoder.encode(user.getPassword()));
+					userRepo.save(user);
+					return new ResponseEntity<String>(user.getUser_name() + " has succesfully registered", HttpStatus.CREATED);
+				}
+			  
 		    }
 
 }
