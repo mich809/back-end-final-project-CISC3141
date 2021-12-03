@@ -37,6 +37,8 @@ public interface UserRepo extends CrudRepository<User, Long>, JpaRepository<User
      */
     @Query(value = "SELECT u.id FROM user AS u WHERE u.user_name = ?1", nativeQuery = true)
     public Long getId( @Param( "username" ) String username );
+    
+    boolean existsByusername(String username);
 
 
 
