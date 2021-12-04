@@ -40,7 +40,7 @@ public class BugService
     }
 
     /**
-     * Notes a bug
+     * Updates a bug
      * @param bug
      */
     public void updateBug(Bug bug)
