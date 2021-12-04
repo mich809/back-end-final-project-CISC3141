@@ -54,7 +54,7 @@ public class BugController
     }
 
     /**
-     * Notes a bug
+     * Updates a bug
      * @param bug
      */
     @RequestMapping(method = RequestMethod.POST, value = "/update-bug")
