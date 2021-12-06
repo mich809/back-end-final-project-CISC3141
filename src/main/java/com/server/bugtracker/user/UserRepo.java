@@ -6,13 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Scope("session")
 @Repository
-@Transactional(readOnly = false)    // If necessary, can delete database entries
 public interface UserRepo extends CrudRepository<User, Long>, JpaRepository<User, Long>
 {
 
@@ -21,7 +19,7 @@ public interface UserRepo extends CrudRepository<User, Long>, JpaRepository<User
      * @return JSON array of users
      */
     @Query(value = "SELECT * FROM user", nativeQuery = true)
-    public List<User> getUsers();
+    List<User> getUsers();
 
     /**
      * Finds user
@@ -36,7 +34,7 @@ public interface UserRepo extends CrudRepository<User, Long>, JpaRepository<User
      * @return Long value
      */
     @Query(value = "SELECT u.id FROM user AS u WHERE u.user_name = ?1", nativeQuery = true)
-    public Long getId( @Param( "username" ) String username );
+    Long getId( @Param( "username" ) String username );
     
     boolean existsByusername(String username);
 

@@ -78,6 +78,21 @@ public class Bug
         this.bug_status = bug_status;
     }
 
+
+    /**
+     * Check if required bug entries are populated
+     * @return true if bug is valid, false if it isn't
+     */
+    public boolean validBug()
+    {
+        if( title != null && bug_description != null && due_date != null && assigned_to != 0 &&
+                severity!= null && bug_status != null )
+        {
+            return true;
+        }
+        return false;
+    }
+
     public long getId()
     {
         return id;
