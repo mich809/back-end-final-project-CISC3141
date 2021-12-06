@@ -3,6 +3,7 @@ package com.server.bugtracker.user;
 import org.springframework.context.annotation.Scope;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Scope("session")
 @Entity
@@ -26,6 +27,8 @@ public class User
     private String teamRole;
     @Column(name = "organization")
     private String organization;
+
+    // TODO Remove assigned_to in database and in User class
 
     /**
      * No-arg constructor
@@ -51,6 +54,20 @@ public class User
         this.email = email;
         this.teamRole = teamRole;
         this.organization = organization;
+    }
+
+    /**
+     * Checks if user registration data is valid
+     * @return True if user is valid, false if it isn't
+     */
+    public boolean validUser()
+    {
+        if( name != null && username != null && password != null && email != null &&
+                teamRole != null && organization != null )
+        {
+            return true;
+        }
+        return false;
     }
 
     public long getId()

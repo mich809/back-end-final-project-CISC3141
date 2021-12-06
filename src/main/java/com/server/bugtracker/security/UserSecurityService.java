@@ -89,19 +89,27 @@ public class UserSecurityService implements UserDetailsService{
 	/**
 	 * Check if username already exist in the database, if it does...then it returns a conflic status, otherwise user gets saved to repo.
 	 * @param user
-	 * @return 209 status code (Created) if successful
+	 * @return 201 status code (Created) if successful
 	 * @return 409 status code (Conflict) if unsuccessful (username already exists)
+	 * @return 422 status code (Unprocessable Entity) - if registration request is missing a data
 	 */
 	public ResponseEntity<String> registerNewUser(User user) {
-				if(userRepo.existsByusername(user.getUser_name())) {					
-					return new ResponseEntity<String>(user.getUser_name() + " already exist in the database", HttpStatus.CONFLICT);
+				if( user.validUser() )
+				{
+					if(userRepo.existsByusername(user.getUser_name()))
+					{
+						return new ResponseEntity<String>(user.getUser_name() + " already exist in the database", HttpStatus.CONFLICT);
+					} else
+					{
+						user.setPassword(passwordEncoder.encode(user.getPassword()));
+						userRepo.save(user);
+						return new ResponseEntity<String>(user.getUser_name() + " has successfully registered", HttpStatus.CREATED);
+					}
+				} else
+				{
+					return new ResponseEntity<String>( "All fields are required", HttpStatus.UNPROCESSABLE_ENTITY);
 				}
-				else {
-					user.setPassword(passwordEncoder.encode(user.getPassword()));
-					userRepo.save(user);
-					return new ResponseEntity<String>(user.getUser_name() + " has succesfully registered", HttpStatus.CREATED);
-				}
-			  
+
 		    }
 
 }

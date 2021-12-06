@@ -3,7 +3,11 @@ package com.server.bugtracker.bug;
 import com.server.bugtracker.user.UserRepo;
 import com.server.bugtracker.user.UserService;
 import org.springframework.context.annotation.Scope;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -34,7 +38,7 @@ public class BugController
 
     /**
      * Gets all bugs in database
-     * @return
+     * @return JSON array of bug entries
      */
     @RequestMapping(method = RequestMethod.GET, value = "/get-bugs")
     public List<Bug> getBugs()
@@ -43,14 +47,15 @@ public class BugController
     }
 
     /**
-     * Creates a bug request
-     * POST request must be JSON format
+     * Creates a new bug entry in database
      * @param bug
+     * @return 201 status code (Created) if successful
+     * @return 422 status code (Unprocessable Entity) if missing required data fields
      */
     @RequestMapping(method = RequestMethod.POST, value = "/create-bug")
-    public void createBug(@RequestBody Bug bug)
+    public ResponseEntity<String> createBug(@RequestBody Bug bug)
     {
-        bugService.createBug(bug);
+        return bugService.createBug(bug);
     }
 
     /**
@@ -70,10 +75,25 @@ public class BugController
         bugService.updateBug(bug);
     }
 
+    /**
+     * Retrieves a single bug
+     * @param bug
+     * @return Bug database entry (JSON)
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/get-bug")
-    public Bug getBug(@RequestBody String id)       // Should this be a string, JSON, or path variable?
+    public Bug getBug(@RequestBody Bug bug)
     {
-        return  bugService.getBug( id );
+        return  bugService.getBug( bug.getId() );
+    }
+
+    /**
+     * Deletes a bug
+     * @param bug
+     */
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete-bug")
+    public void deleteBug(@RequestBody Bug bug)
+    {
+        bugService.deleteBug( bug );
     }
 
 }
