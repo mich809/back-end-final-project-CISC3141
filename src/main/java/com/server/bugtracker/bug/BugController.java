@@ -57,7 +57,7 @@ public class BugController
      * Updates a bug
      * @param bug
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/update-bug")
+    @RequestMapping(method = RequestMethod.PUT, value = "/update-bug")
     public void updateBug(@RequestBody Bug bug)
     {
         // Backend send a list of all the bugs to the frontend -> as JSON
@@ -71,10 +71,9 @@ public class BugController
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/get-bug")
-    public Bug getBug(@RequestBody String id)
+    public Bug getBug(@RequestBody String id)       // Should this be a string, JSON, or path variable?
     {
         return  bugService.getBug( id );
     }
-
 
 }
