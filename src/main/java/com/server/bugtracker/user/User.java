@@ -3,7 +3,6 @@ package com.server.bugtracker.user;
 import org.springframework.context.annotation.Scope;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Scope("session")
 @Entity
