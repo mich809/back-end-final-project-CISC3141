@@ -35,6 +35,7 @@ public interface BugRepo extends CrudRepository<Bug, Long>, JpaRepository<Bug, L
      * @param bug_status
      */
     @Modifying
+    @Transactional
     @Query(value = "UPDATE bug AS b SET b.id = ?1, b.title = ?2, b.bug_description = ?3,  b.due_date = ?4, " +
             "b.assigned_to = ?5, b.created_by = ?6, b.severity = ?7, b.bug_status = ?8 WHERE b.id = ?1", nativeQuery = true)
     void updateBug( @Param("id") long id, @Param("title") String title, @Param("bug_description") String bug_description,
