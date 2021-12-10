@@ -61,10 +61,14 @@ public class User
      */
     public boolean validUser()
     {
-        if( !name.isEmpty() && !username.isEmpty() && !password.isEmpty() && !email.isEmpty() &&
-                !teamRole.isEmpty() && !organization.isEmpty() )
+        if( name != null && username != null && password != null && email != null &&
+                teamRole != null && organization != null )
         {
-            return true;
+            if ( !name.isEmpty() && !username.isEmpty() && !password.isEmpty() && !email.isEmpty() &&
+                !teamRole.isEmpty() && !organization.isEmpty() )
+            {
+                return true;
+            }
         }
         return false;
     }
