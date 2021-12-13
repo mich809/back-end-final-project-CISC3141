@@ -1,3 +1,8 @@
+link to front-end : https://github.com/a-gusenkov/BugTracker-FrontEnd/tree/main/bt-table
+
+
+
+
 # Back-End-Final-Project-CISC3141
 
 ### Team Members and Roles
